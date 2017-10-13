@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class File {
+public class Arquivo {
 	
     private String csvFile = "/home/lavinia/workspace/Chart-Generator/dataset/airbnb.csv";
     private BufferedReader br = null;
@@ -14,7 +14,7 @@ public class File {
 
     public int[] ofertasBairro() {
     	
-    	int valoresBairros[] = new int[5];
+    	int valoresBairros[] = new int[4];
         try {
 
             br = new BufferedReader(new FileReader(csvFile));
@@ -41,7 +41,6 @@ public class File {
             valoresBairros[1] = case2;
             valoresBairros[2] = case3;
             valoresBairros[3] = case4;
-            valoresBairros[4] = case1 + case2 + case3 + case4;
 
         } 
         
@@ -60,6 +59,10 @@ public class File {
         }
 		return valoresBairros;
 
+    }
+    
+    public static void main(String[] args){
+    	
     }
 
 }
