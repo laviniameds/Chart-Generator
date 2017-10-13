@@ -11,9 +11,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame; 
 import org.jfree.ui.RefineryUtilities; 
 
-public class Chart extends ApplicationFrame {
+public class BarChart extends ApplicationFrame {
+	
+	//bar chart
    
-   public Chart( String applicationTitle , String chartTitle ) {
+   public BarChart( String applicationTitle , String chartTitle ) {
       super( applicationTitle );        
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           
@@ -44,11 +46,11 @@ public class Chart extends ApplicationFrame {
       dataset.addValue( valoresBairros[3] , "South Dublin" , qtd );  
 
       return dataset; 
-   }
+   } 
 	   
    
    public static void main( String[ ] args ) throws IOException {
-	   Chart chart = new Chart("Ofertas por Bairro", 
+	  BarChart chart = new BarChart("Ofertas por Bairro", 
          "Dublin, Leinster, Ireland");
       chart.pack( );        
       RefineryUtilities.centerFrameOnScreen( chart );        
