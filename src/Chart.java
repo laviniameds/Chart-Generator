@@ -17,7 +17,7 @@ public class Chart extends ApplicationFrame {
       super( applicationTitle );        
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           
-         "Bairros",            
+         "Bairro",            
          "Quantidade",            
          createDataset(),          
          PlotOrientation.VERTICAL,           
@@ -54,6 +54,15 @@ public class Chart extends ApplicationFrame {
       RefineryUtilities.centerFrameOnScreen( chart );        
       chart.setVisible( true ); 
       
+      JFreeChart barChart = ChartFactory.createBarChart(
+    	         "Ofertas por Bairro",           
+    	         "Bairro",            
+    	         "Quantidade",            
+    	         createDataset(),          
+    	         PlotOrientation.VERTICAL,           
+    	         true, true, false);
       
+      File BarChart = new File("/home/lavinia/workspace/Chart-Generator/img/BarChart.jpeg"); 
+      ChartUtilities.saveChartAsJPEG( BarChart , barChart , 560 , 367 );
    }
 }
