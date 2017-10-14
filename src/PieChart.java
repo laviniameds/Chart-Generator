@@ -26,7 +26,6 @@ public class PieChart extends ApplicationFrame {
       DefaultPieDataset dataset = new DefaultPieDataset( );
       Arquivo f = new Arquivo();
 	  int valoresBairros[] = f.ofertasBairro();
-      PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator("{0} = {1}");
 	  
       dataset.setValue( "Dn Laoghaire-Rathdown" , new Double(valoresBairros[0]) );  
       dataset.setValue( "Dublin City" , new Double(valoresBairros[1]) );   
@@ -35,7 +34,7 @@ public class PieChart extends ApplicationFrame {
       return dataset;         
    }
    
-   private static JFreeChart createChart( PieDataset dataset ) throws IOException {
+   private static JFreeChart createChart( PieDataset dataset ) {
       JFreeChart chart = ChartFactory.createPieChart(      
          "Ofertas por Bairro",   // chart title 
          dataset,          // data    
@@ -45,9 +44,6 @@ public class PieChart extends ApplicationFrame {
       
       PiePlot plot = (PiePlot) chart.getPlot();
       plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} - {2}"));  
-      
-      File PieChart = new File("/home/lavinia/workspace/Chart-Generator/img/PieChart.jpeg"); 
-      ChartUtilities.saveChartAsJPEG( PieChart , chart , 560 , 367 );
 
       return chart;
    }
@@ -57,11 +53,10 @@ public class PieChart extends ApplicationFrame {
       return new ChartPanel( chart ); 
    }
 
-   public static void main( String[ ] args ) throws IOException {
-	  PieChart demo = new PieChart( "Ofertas por Bairro" );  
-      demo.setSize( 560 , 367 );    
-      RefineryUtilities.centerFrameOnScreen( demo );    
-      demo.setVisible( true );
+   public void gerarGrafico() throws IOException{
+	   
+      File PieChart = new File("/home/lavinia/workspace/Chart-Generator/img/PieChart.jpeg"); 
+      ChartUtilities.saveChartAsJPEG( PieChart , createChart(createDataset()) , 560 , 367 );
       
    }
 }
