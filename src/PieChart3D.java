@@ -1,4 +1,5 @@
 import java.io.*; 
+import java.util.ArrayList;
 
 import org.jfree.chart.ChartFactory; 
 import org.jfree.chart.JFreeChart; 
@@ -15,10 +16,11 @@ public class PieChart3D {
       Arquivo f = new Arquivo();
 	  int valoresBairros[] = f.ofertasBairro();
 	  
-      dataset.setValue( "Dn Laoghaire-Rathdown" , new Double(valoresBairros[0]) );  
-      dataset.setValue( "Dublin City" , new Double(valoresBairros[1]) );   
-      dataset.setValue( "Fingal" , new Double( valoresBairros[2] ) );    
-      dataset.setValue( "South Dublin" , new Double( valoresBairros[3] ) );
+	  ArrayList<String> nomesBairros = f.nomesBairros();
+	  
+	  for(int i = 0;i<valoresBairros.length;i++){
+	      dataset.setValue( nomesBairros.get(i) , new Double(valoresBairros[i]) ); 
+      }  
 
       JFreeChart chart = ChartFactory.createPieChart3D( 
          "Ofertas por Bairro" ,  // chart title                   

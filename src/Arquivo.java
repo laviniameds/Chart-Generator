@@ -2,19 +2,61 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Arquivo {
 	
-    private String csvFile = "/home/lavinia/workspace/Chart-Generator/dataset/airbnb.csv";
-    private BufferedReader br = null;
-    private String line = "";
-    private String cvsSplitBy = ",";
-    private int case1 = 0, case2 = 0, case3 = 0, case4 = 0;
+    private static ArrayList<String> bairros = new ArrayList<String> ();
+	   
+	public static ArrayList<String> nomesBairros(String csvFile) {
+	    BufferedReader br = null;
+	    String line = "";
+	    String cvsSplitBy = ",";
+		
+		
+	        try {
+	
+	            br = new BufferedReader(new FileReader(csvFile));
+	            while ((line = br.readLine()) != null) {
+	
+	                String[] linhaArquivo = line.split(cvsSplitBy);
+	                for(int i = 0;i<linhaArquivo.length;i++){
+	                	if(!(linhaArquivo[i].equalsIgnoreCase("neighbourhood_group")) && 
+	                			!(linhaArquivo[i].equalsIgnoreCase("neighbourhood")) && 
+	                			!(linhaArquivo[i].equalsIgnoreCase(""))){
+			               bairros.add(linhaArquivo[i]);		                	
+	                	}
+	                }
+	                
+	            }
+	        } 
+	        
+	        catch (FileNotFoundException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } finally {
+	            if (br != null) {
+	                try {
+	                    br.close();
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        }
+			return bairros;
+	
+	    }   
 
-
-    public int[] ofertasBairro() {
+    public static int[] ofertasBairro(String csvFileBairros, String csvFile) {
+    	nomesBairros(csvFileBairros);
     	
-    	int valoresBairros[] = new int[4];
+	    BufferedReader br = null;
+	    String line = "";
+	    String cvsSplitBy = ",";
+    	
+    	int valoresBairros[] = new int[bairros.size()];
         try {
 
             br = new BufferedReader(new FileReader(csvFile));
@@ -22,26 +64,13 @@ public class Arquivo {
 
                 String[] linhaArquivo = line.split(cvsSplitBy);
                 for(int i = 0;i<linhaArquivo.length;i++){
-                	switch(linhaArquivo[i].toString()){
-	                	case "Dn Laoghaire-Rathdown": case1++;
-	                		break;
-	                	case "Dublin City": case2++;
-	                		break;
-	                	case "Fingal": case3++;
-	                		break;
-	                	case "South Dublin": case4++;
-	                		break;
-	                	default: 
-	                		break;
+                	for(int j = 0;j<bairros.size();j++){
+                		if(linhaArquivo[i].equalsIgnoreCase(bairros.get(j)))
+                			valoresBairros[j]++;
                 	}
                 }
                 
             }
-            valoresBairros[0] = case1;
-            valoresBairros[1] = case2;
-            valoresBairros[2] = case3;
-            valoresBairros[3] = case4;
-
         } 
         
         catch (FileNotFoundException e) {
@@ -61,7 +90,7 @@ public class Arquivo {
 
     }
     
-    public static void main(String[] args){
+    public static void main(String[] args){   	
     	
     }
 

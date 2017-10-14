@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -43,17 +44,13 @@ public class BarChart extends ApplicationFrame {
    private static CategoryDataset createDataset( ) {
 	  Arquivo f = new Arquivo();
 	  int valoresBairros[] = f.ofertasBairro();
-      
-      final String qtd = "Quantidade";              
+	  ArrayList<String> nomesBairros = f.nomesBairros();
+                    
       final DefaultCategoryDataset dataset = new DefaultCategoryDataset( );  
-
-      dataset.addValue( valoresBairros[0] , "Dn Laoghaire-Rathdown" , qtd );                 
-
-      dataset.addValue( valoresBairros[1] , "Dublin City" , qtd );        
-
-      dataset.addValue( valoresBairros[2] , "Fingal" , qtd );
       
-      dataset.addValue( valoresBairros[3] , "South Dublin" , qtd );  
+      for(int i = 0;i<valoresBairros.length;i++){
+    	  dataset.addValue( valoresBairros[i] , nomesBairros.get(i) , "Quantidade" );
+      }
 
       return dataset; 
    } 

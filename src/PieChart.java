@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -26,11 +27,12 @@ public class PieChart extends ApplicationFrame {
       DefaultPieDataset dataset = new DefaultPieDataset( );
       Arquivo f = new Arquivo();
 	  int valoresBairros[] = f.ofertasBairro();
+	  ArrayList<String> nomesBairros = f.nomesBairros();
 	  
-      dataset.setValue( "Dn Laoghaire-Rathdown" , new Double(valoresBairros[0]) );  
-      dataset.setValue( "Dublin City" , new Double(valoresBairros[1]) );   
-      dataset.setValue( "Fingal" , new Double( valoresBairros[2] ) );    
-      dataset.setValue( "South Dublin" , new Double( valoresBairros[3] ) );
+	  for(int i = 0;i<valoresBairros.length;i++){
+	      dataset.setValue( nomesBairros.get(i) , new Double(valoresBairros[i]) ); 
+      }    
+	   
       return dataset;         
    }
    
