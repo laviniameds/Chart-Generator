@@ -11,14 +11,6 @@ public class Arquivo {
     
     private static String csvFileBairros;
     private static String csvFile;
-    
-	public void setCsvFileBairros(String csvFileBairros) {
-		this.csvFileBairros = csvFileBairros;
-	}
-
-	public void setCsvFile(String csvFile) {
-		this.csvFile = csvFile;
-	}
 	   
 	public static ArrayList<String> nomesBairros() {
 	    BufferedReader br = null;
@@ -104,5 +96,21 @@ public class Arquivo {
     public static void main(String[] args){   	
     	
     }
+
+	public static String getCsvFileBairros() {
+		return csvFileBairros;
+	}
+
+	public static void setCsvFileBairros(String csvFileBairros) {
+		Arquivo.csvFileBairros = csvFileBairros;
+	}
+
+	public static String getCsvFile() {
+		return csvFile;
+	}
+
+	public static void setCsvFile(String csvFile) {
+		Arquivo.csvFile = csvFile;
+	}
 
 }

@@ -11,9 +11,8 @@ import org.jfree.chart.ChartUtilities;
 
 public class PieChart3D {
 
-   public void gerarGrafico() throws Exception {
+   public void gerarGrafico(String path, Arquivo f) throws Exception {
       DefaultPieDataset dataset = new DefaultPieDataset( );             
-      Arquivo f = new Arquivo();
 	  int valoresBairros[] = f.ofertasBairro();
 	  
 	  ArrayList<String> nomesBairros = f.nomesBairros();
@@ -34,7 +33,8 @@ public class PieChart3D {
       plot.setForegroundAlpha( 0.60f );             
       plot.setInteriorGap( 0.02 );     
       plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} - {2}"));  
-      File pieChart3D = new File( "/home/lavinia/workspace/Chart-Generator/img/PieChart3D.jpeg" );                           
+      
+      File pieChart3D = new File(path + "/PieChart3D.jpeg");                           
       ChartUtilities.saveChartAsJPEG( pieChart3D , chart , 560 , 367 );
    }
 }

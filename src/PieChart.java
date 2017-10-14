@@ -18,14 +18,13 @@ import org.jfree.ui.RefineryUtilities;
  
 public class PieChart extends ApplicationFrame {
    
-   public PieChart() throws IOException {
+   public PieChart(Arquivo f) throws IOException {
       super( "Ofertas por Bairro" ); 
-      setContentPane(createDemoPanel( ));
+      setContentPane(createDemoPanel(f));
    }
    
-   private static PieDataset createDataset( ) {
+   private static PieDataset createDataset(Arquivo f) {
       DefaultPieDataset dataset = new DefaultPieDataset( );
-      Arquivo f = new Arquivo();
 	  int valoresBairros[] = f.ofertasBairro();
 	  ArrayList<String> nomesBairros = f.nomesBairros();
 	  
@@ -50,15 +49,15 @@ public class PieChart extends ApplicationFrame {
       return chart;
    }
    
-   public static JPanel createDemoPanel( ) throws IOException {
-      JFreeChart chart = createChart(createDataset( ) );  
+   public static JPanel createDemoPanel(Arquivo f) throws IOException {
+      JFreeChart chart = createChart(createDataset(f) );  
       return new ChartPanel( chart ); 
    }
 
-   public void gerarGrafico() throws IOException{
+   public void gerarGrafico(String path, Arquivo f) throws IOException{
 	   
-      File PieChart = new File("/home/lavinia/workspace/Chart-Generator/img/PieChart.jpeg"); 
-      ChartUtilities.saveChartAsJPEG( PieChart , createChart(createDataset()) , 560 , 367 );
+      File PieChart = new File(path + "/PieChart.jpeg"); 
+      ChartUtilities.saveChartAsJPEG( PieChart , createChart(createDataset(f)) , 560 , 367 );
       
    }
 }
