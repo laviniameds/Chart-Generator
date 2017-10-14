@@ -1,5 +1,8 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+
+import javax.swing.JFileChooser;
 
 public class Main {
 
@@ -12,10 +15,31 @@ public class Main {
 			switch (op) {
 			case 1:
 				Arquivo arquivo = new Arquivo();
-				System.out.println("Digite o caminho do csv de bairros: ");
-				arquivo.setCsvFileBairros(sc.next());
-				System.out.println("Digite o caminho do csv de ofertas por bairro: ");
-				arquivo.setCsvFile(sc.next());
+				
+				JFileChooser chooser = new JFileChooser();
+				chooser.setCurrentDirectory(new java.io.File("."));
+				chooser.setDialogTitle("Selecione arquivo csv dos bairros");
+				chooser.setAcceptAllFileFilterUsed(false);
+				
+				if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+					  arquivo.setCsvFileBairros(chooser.getSelectedFile().getAbsolutePath());
+					  System.out.println("Arquivos dos bairros selecionado");
+					} else {
+					  System.out.println("Não foi selecionado nenhum arquivo!");
+					}
+				
+				JFileChooser chooser2 = new JFileChooser();
+				chooser2.setCurrentDirectory(new java.io.File("."));
+				chooser2.setDialogTitle("Selecione o arquivo csv das ofertas por bairro");
+				chooser2.setAcceptAllFileFilterUsed(false);
+				
+				if (chooser2.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+					  arquivo.setCsvFileBairros(chooser2.getSelectedFile().getAbsolutePath());
+					  System.out.println("Arquivos de ofertas por bairro selecionado");
+					} else {
+					  System.out.println("Não foi selecionado nenhum arquivo!");
+					}
+
 				break;
 			
 			case 2:
