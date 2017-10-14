@@ -16,8 +16,8 @@ import org.jfree.ui.RefineryUtilities;
 
 public class BarChart extends ApplicationFrame {
    
-   public BarChart( String title ) throws IOException {
-	      super( title ); 
+   public BarChart() throws IOException {
+	      super( "Ofertas por Bairro" ); 
 	      setContentPane(createDemoPanel( ));
 	   }
   
@@ -55,12 +55,8 @@ public class BarChart extends ApplicationFrame {
       return dataset; 
    } 
    
-   public static void gerarGrafico() throws IOException {
+   public void gerarGrafico() throws IOException {
 	      File BarChart = new File("/home/lavinia/workspace/Chart-Generator/img/BarChart.jpeg"); 
 	      ChartUtilities.saveChartAsJPEG( BarChart , createChart(createDataset()) , 560 , 367 );           
-   }
-   
-   public static void main(String[] args) throws IOException {
-      gerarGrafico();        
    }
 }

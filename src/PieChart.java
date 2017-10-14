@@ -18,8 +18,8 @@ import org.jfree.ui.RefineryUtilities;
  
 public class PieChart extends ApplicationFrame {
    
-   public PieChart( String title ) throws IOException {
-      super( title ); 
+   public PieChart() throws IOException {
+      super( "Ofertas por Bairro" ); 
       setContentPane(createDemoPanel( ));
    }
    

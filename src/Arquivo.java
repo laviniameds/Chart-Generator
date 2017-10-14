@@ -8,8 +8,19 @@ import java.util.Arrays;
 public class Arquivo {
 	
     private static ArrayList<String> bairros = new ArrayList<String> ();
+    
+    private static String csvFileBairros;
+    private static String csvFile;
+    
+	public void setCsvFileBairros(String csvFileBairros) {
+		this.csvFileBairros = csvFileBairros;
+	}
+
+	public void setCsvFile(String csvFile) {
+		this.csvFile = csvFile;
+	}
 	   
-	public static ArrayList<String> nomesBairros(String csvFile) {
+	public static ArrayList<String> nomesBairros() {
 	    BufferedReader br = null;
 	    String line = "";
 	    String cvsSplitBy = ",";
@@ -17,7 +28,7 @@ public class Arquivo {
 		
 	        try {
 	
-	            br = new BufferedReader(new FileReader(csvFile));
+	            br = new BufferedReader(new FileReader(csvFileBairros));
 	            while ((line = br.readLine()) != null) {
 	
 	                String[] linhaArquivo = line.split(cvsSplitBy);
@@ -49,8 +60,8 @@ public class Arquivo {
 	
 	    }   
 
-    public static int[] ofertasBairro(String csvFileBairros, String csvFile) {
-    	nomesBairros(csvFileBairros);
+    public static int[] ofertasBairro() {
+    	nomesBairros();
     	
 	    BufferedReader br = null;
 	    String line = "";

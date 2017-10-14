@@ -9,7 +9,7 @@ import org.jfree.chart.ChartUtilities;
 
 public class BarChart3D {
 	
-	public static void gerarGrafico() throws Exception {
+	public void gerarGrafico() throws Exception {
 	  Arquivo f = new Arquivo();
 	  int valoresBairros[] = f.ofertasBairro();
 	  ArrayList<String> nomesBairros = f.nomesBairros();
@@ -31,8 +31,4 @@ public class BarChart3D {
       File barChart3D = new File( "/home/lavinia/workspace/Chart-Generator/img/BarChart3D.jpeg" );                            
       ChartUtilities.saveChartAsJPEG( barChart3D, barChart, 560 , 367);
 	}
-   
-	public static void main(String[] args) throws Exception {
-	  gerarGrafico();
-   }
 }
