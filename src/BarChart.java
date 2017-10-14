@@ -15,7 +15,7 @@ public class BarChart extends ApplicationFrame {
 	
 	//bar chart
    
-   public BarChart( String applicationTitle , String chartTitle ) {
+   public BarChart( String applicationTitle , String chartTitle ) throws IOException {
       super( applicationTitle );        
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           
@@ -24,6 +24,9 @@ public class BarChart extends ApplicationFrame {
          createDataset(),          
          PlotOrientation.VERTICAL,           
          true, true, false);
+      
+      File BarChart = new File("/home/lavinia/workspace/Chart-Generator/img/BarChart.jpeg"); 
+      ChartUtilities.saveChartAsJPEG( BarChart , barChart , 560 , 367 );
          
       ChartPanel chartPanel = new ChartPanel( barChart );        
       chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );        
@@ -55,16 +58,6 @@ public class BarChart extends ApplicationFrame {
       chart.pack( );        
       RefineryUtilities.centerFrameOnScreen( chart );        
       chart.setVisible( true ); 
-      
-      JFreeChart barChart = ChartFactory.createBarChart(
-    	         "Ofertas por Bairro",           
-    	         "Bairro",            
-    	         "Quantidade",            
-    	         createDataset(),          
-    	         PlotOrientation.VERTICAL,           
-    	         true, true, false);
-      
-      File BarChart = new File("/home/lavinia/workspace/Chart-Generator/img/BarChart.jpeg"); 
-      ChartUtilities.saveChartAsJPEG( BarChart , barChart , 560 , 367 );
+            
    }
 }
