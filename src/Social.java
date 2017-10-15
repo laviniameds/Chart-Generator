@@ -12,8 +12,8 @@ import com.restfb.types.User;
 
 public class Social {
 
-	public static void postarNoFb(String path, String nomegrafico, String message) throws FileNotFoundException{
-		String accessToken = "SEU TOKEN AQUI";
+	public static void postarNoFb(String token, String path, String nomegrafico, String message) throws FileNotFoundException{
+		String accessToken = token;
 
 		@SuppressWarnings("deprecation")
 		FacebookClient fb = new DefaultFacebookClient(accessToken);

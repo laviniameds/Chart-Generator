@@ -10,7 +10,7 @@ import javax.swing.JFileChooser;
 public class Main {
 
 	public static void main(String[] args) throws Exception {
-		Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in).useDelimiter("\\n");;
 		
 		Arquivo arquivo = new Arquivo();
 		Social s = new Social();
@@ -53,7 +53,7 @@ public class Main {
 				
 				JFileChooser chooser3 = new JFileChooser();
 				chooser3.setCurrentDirectory(new java.io.File("."));
-				chooser3.setDialogTitle("choosertitle");
+				chooser3.setDialogTitle("Selecione o destino das imagens");
 				chooser3.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
 				if (chooser3.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
@@ -81,7 +81,7 @@ public class Main {
 				
 			case 3:
 				String nomegrafico = "";
-				System.out.println("Qual imagem deseja anexar?\n1 - BarChart\n2 - BarChart3D\n3 - PieChart\n4 - PieChart3D\n");
+				System.out.println("\nQual imagem deseja anexar?\n1 - BarChart\n2 - BarChart3D\n3 - PieChart\n4 - PieChart3D\n");
 				switch(sc.nextInt()){
 					case 1: nomegrafico = "/BarChart.jpeg";
 						break;
@@ -94,9 +94,11 @@ public class Main {
 					default: nomegrafico = "/BarChart.jpeg";
 						break;
 				}
-				System.out.println("Escreva seu post: ");
+				System.out.println("\nEscreva seu post: ");
 				String message = sc.next();
-				s.postarNoFb(path, nomegrafico, message);
+				System.out.println("\nInsira seu token de acesso ao facebook: ");
+				String token = sc.next();
+				s.postarNoFb(token, path, nomegrafico, message);
 				System.out.println("Postado no facebook com sucesso!");
 				break;
 				
