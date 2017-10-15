@@ -12,7 +12,6 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset; 
 import org.jfree.data.category.DefaultCategoryDataset; 
 import org.jfree.ui.ApplicationFrame; 
-import org.jfree.ui.RefineryUtilities; 
 
 public class BarChart extends ApplicationFrame {
    
@@ -45,7 +44,7 @@ public class BarChart extends ApplicationFrame {
 	  int valoresBairros[] = f.ofertasBairro();
 	  ArrayList<String> nomesBairros = f.nomesBairros();
                     
-      final DefaultCategoryDataset dataset = new DefaultCategoryDataset( );  
+      final DefaultCategoryDataset dataset = new DefaultCategoryDataset();  
       
       for(int i = 0;i<valoresBairros.length;i++){
     	  dataset.addValue( valoresBairros[i] , nomesBairros.get(i) , "Quantidade" );

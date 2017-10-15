@@ -1,7 +1,10 @@
-import java.io.File;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import javax.swing.JFileChooser;
 
 public class Main {
@@ -10,6 +13,8 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		Arquivo arquivo = new Arquivo();
+		Social s = new Social();
+		String path  = "";
 		
 		int op = -1;
 		while(op != 0){
@@ -24,7 +29,7 @@ public class Main {
 				chooser.setAcceptAllFileFilterUsed(false);
 				
 				if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-					  arquivo.setCsvFileBairros(chooser.getSelectedFile().getAbsolutePath());
+					  Arquivo.setCsvFileBairros(chooser.getSelectedFile().getAbsolutePath());
 					  System.out.println("Arquivos dos bairros selecionado");
 					} else {
 					  System.out.println("Não foi selecionado nenhum arquivo!");
@@ -36,7 +41,7 @@ public class Main {
 				chooser2.setAcceptAllFileFilterUsed(false);
 				
 				if (chooser2.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-					  arquivo.setCsvFile(chooser2.getSelectedFile().getAbsolutePath());
+					  Arquivo.setCsvFile(chooser2.getSelectedFile().getAbsolutePath());
 					  System.out.println("Arquivos de ofertas por bairro selecionado");
 					} else {
 					  System.out.println("Não foi selecionado nenhum arquivo!");
@@ -45,7 +50,6 @@ public class Main {
 				break;
 			
 			case 2:
-				String path  = "";
 				
 				JFileChooser chooser3 = new JFileChooser();
 				chooser3.setCurrentDirectory(new java.io.File("."));
@@ -71,12 +75,29 @@ public class Main {
 				PieChart3D pieChart3D = new PieChart3D();
 				pieChart3D.gerarGrafico(path, arquivo);
 				
-				System.out.println("Gráficos gerados com sucesso!");
+				System.out.println("\nGráficos gerados com sucesso!");
 				
 				break;
 				
 			case 3:
-				
+				String nomegrafico = "";
+				System.out.println("Qual imagem deseja anexar?\n1 - BarChart\n2 - BarChart3D\n3 - PieChart\n4 - PieChart3D\n");
+				switch(sc.nextInt()){
+					case 1: nomegrafico = "/BarChart.jpeg";
+						break;
+					case 2: nomegrafico = "/BarChart3D.jpeg";
+						break;
+					case 3: nomegrafico = "/PieChart.jpeg";
+						break;
+					case 4: nomegrafico = "/PieChart3D.jpeg";
+						break;
+					default: nomegrafico = "/BarChart.jpeg";
+						break;
+				}
+				System.out.println("Escreva seu post: ");
+				String message = sc.next();
+				s.postarNoFb(path, nomegrafico, message);
+				System.out.println("Postado no facebook com sucesso!");
 				break;
 				
 			case 0:				
