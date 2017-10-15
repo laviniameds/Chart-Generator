@@ -35,6 +35,6 @@ public class PieChart3D {
       plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} - {2}"));  
       
       File pieChart3D = new File(path + "/PieChart3D.jpeg");                           
-      ChartUtilities.saveChartAsJPEG( pieChart3D , chart , 560 , 367 );
+      ChartUtilities.saveChartAsJPEG( pieChart3D , chart , 1024 , 768 );
    }
 }

@@ -1,19 +1,16 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import javax.swing.JFileChooser;
 
 public class Main {
 
+	private static Scanner scanner;
+
 	public static void main(String[] args) throws Exception {
-		Scanner sc = new Scanner(System.in).useDelimiter("\\n");;
+		scanner = new Scanner(System.in);
+		Scanner sc = scanner.useDelimiter("\\n");;
 		
 		Arquivo arquivo = new Arquivo();
-		Social s = new Social();
 		String path  = "";
 		
 		int op = -1;
@@ -98,7 +95,13 @@ public class Main {
 				String message = sc.next();
 				System.out.println("\nInsira seu token de acesso ao facebook: ");
 				String token = sc.next();
-				s.postarNoFb(token, path, nomegrafico, message);
+				System.out.println("\nInsira o ID do usuario que deseja marcar: ");
+				String tagID = sc.next();
+				System.out.println("\nInsira o nome do usuario que deseja marcar: ");
+				String tagText = sc.next();
+				PhotoTag photoTag = new PhotoTag(tagID, tagText);
+				
+				Social.postarNoFb(message, token, path, nomegrafico, photoTag);
 				System.out.println("Postado no facebook com sucesso!");
 				break;
 				

@@ -57,7 +57,7 @@ public class PieChart extends ApplicationFrame {
    public void gerarGrafico(String path, Arquivo f) throws IOException{
 	   
       File PieChart = new File(path + "/PieChart.jpeg"); 
-      ChartUtilities.saveChartAsJPEG( PieChart , createChart(createDataset(f)) , 560 , 367 );
+      ChartUtilities.saveChartAsJPEG( PieChart , createChart(createDataset(f)) , 1024 , 768 );
       
    }
 }

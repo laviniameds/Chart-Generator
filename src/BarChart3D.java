@@ -28,6 +28,6 @@ public class BarChart3D {
  	         true, true, false);
                                   
       File barChart3D = new File(path + "/BarChart3D.jpeg");                            
-      ChartUtilities.saveChartAsJPEG( barChart3D, barChart, 560 , 367);
+      ChartUtilities.saveChartAsJPEG( barChart3D, barChart, 1024 , 768);
 	}
 }

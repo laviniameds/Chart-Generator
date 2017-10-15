@@ -36,7 +36,7 @@ public class BarChart extends ApplicationFrame {
     	      
     	              
       ChartPanel chartPanel = new ChartPanel( barChart );        
-      chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
+      chartPanel.setPreferredSize(new java.awt.Dimension( 1024 , 768 ) );
 	return barChart;  
    }
    
@@ -55,6 +55,6 @@ public class BarChart extends ApplicationFrame {
    
    public void gerarGrafico(String path, Arquivo f) throws IOException {
 	      File BarChart = new File(path + "/BarChart.jpeg"); 
-	      ChartUtilities.saveChartAsJPEG( BarChart , createChart(createDataset(f)) , 560 , 367 );           
+	      ChartUtilities.saveChartAsJPEG( BarChart , createChart(createDataset(f)) , 1024 , 768 );           
    }
 }
