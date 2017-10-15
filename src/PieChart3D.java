@@ -22,7 +22,7 @@ public class PieChart3D {
       }  
 
       JFreeChart chart = ChartFactory.createPieChart3D( 
-         "Ofertas por Bairro" ,  // chart title                   
+         "Ofertas de quartos por bairro" ,  // chart title                   
          dataset ,         // data 
          true ,            // include legend                   
          true, 
@@ -32,7 +32,7 @@ public class PieChart3D {
       plot.setStartAngle( 180 );             
       plot.setForegroundAlpha( 0.60f );             
       plot.setInteriorGap( 0.02 );     
-      plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} - {2}"));  
+      plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} - {1} - {2}"));  
       
       File pieChart3D = new File(path + "/PieChart3D.jpeg");                           
       ChartUtilities.saveChartAsJPEG( pieChart3D , chart , 1024 , 768 );

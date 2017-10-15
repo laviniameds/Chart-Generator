@@ -19,7 +19,7 @@ import org.jfree.ui.RefineryUtilities;
 public class PieChart extends ApplicationFrame {
    
    public PieChart(Arquivo f) throws IOException {
-      super( "Ofertas por Bairro" ); 
+      super( "Ofertas de quartos por Bairro" ); 
       setContentPane(createDemoPanel(f));
    }
    
@@ -37,14 +37,14 @@ public class PieChart extends ApplicationFrame {
    
    private static JFreeChart createChart( PieDataset dataset ) {
       JFreeChart chart = ChartFactory.createPieChart(      
-         "Ofertas por Bairro",   // chart title 
+         "Ofertas de quartos por bairro",   // chart title 
          dataset,          // data    
          true,             // include legend   
          true, 
          false);
       
       PiePlot plot = (PiePlot) chart.getPlot();
-      plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} - {2}"));  
+      plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} - {1} - {2}"));  
 
       return chart;
    }

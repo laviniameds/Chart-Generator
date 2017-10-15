@@ -16,13 +16,13 @@ public class BarChart3D {
       final DefaultCategoryDataset dataset = new DefaultCategoryDataset( );  
 
       for(int i = 0;i<valoresBairros.length;i++){
-    	  dataset.addValue( valoresBairros[i] , nomesBairros.get(i) , "Quantidade" );
+    	  dataset.addValue( valoresBairros[i] , nomesBairros.get(i) , "Quartos" );
       }             
       
       JFreeChart barChart = ChartFactory.createBarChart3D(
- 	         "Ofertas por Bairro",           
- 	         "Bairro",            
- 	         "Quantidade",            
+ 	         "Ofertas de quartos por Bairro",           
+ 	         "Nome do bairro",            
+ 	         "Quartos",             
  	         dataset,          
  	         PlotOrientation.VERTICAL,           
  	         true, true, false);
