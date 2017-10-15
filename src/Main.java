@@ -4,11 +4,8 @@ import javax.swing.JFileChooser;
 
 public class Main {
 
-	private static Scanner scanner;
-
 	public static void main(String[] args) throws Exception {
-		scanner = new Scanner(System.in);
-		Scanner sc = scanner.useDelimiter("\\n");;
+		Scanner sc = new Scanner(System.in).useDelimiter("\\n");
 		
 		Arquivo arquivo = new Arquivo();
 		String path  = "";
@@ -91,17 +88,17 @@ public class Main {
 					default: nomegrafico = "/BarChart.jpeg";
 						break;
 				}
-				System.out.println("\nEscreva seu post: ");
-				String message = sc.next();
-				System.out.println("\nInsira seu token de acesso ao facebook: ");
+				System.out.println("Insira seu token de acesso ao facebook: ");
 				String token = sc.next();
-				System.out.println("\nInsira o ID do usuario que deseja marcar: ");
+				System.out.println("Escreva seu post: ");
+				String message = sc.next();
+				System.out.println("Insira o ID do usuario que deseja marcar: ");
 				String tagID = sc.next();
-				System.out.println("\nInsira o nome do usuario que deseja marcar: ");
+				System.out.println("Insira o nome do usuario que deseja marcar: ");
 				String tagText = sc.next();
 				PhotoTag photoTag = new PhotoTag(tagID, tagText);
 				
-				Social.postarNoFb(message, token, path, nomegrafico, photoTag);
+				Social.postarNoFb(token, path, nomegrafico, message, photoTag);
 				System.out.println("Postado no facebook com sucesso!");
 				break;
 				
